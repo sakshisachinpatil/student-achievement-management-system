@@ -6,20 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        function deleteAchievement(id) {
-            fetch(`/achievement/${id}`, {
-                method: 'delete',
-                headers: { 'Content-Type': 'application/json' },
-            })
-                .then((res) => {
-                    if (res.ok) {
-                        window.location.reload()
-                    }
-                })
-                .catch((err) => console.error(err))
-        }
-    </script>
     <title>Student Achievement</title>
 </head>
 

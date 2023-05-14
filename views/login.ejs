@@ -1,0 +1,20 @@
+<form onsubmit="return validateLogin();" action="/home" style="margin-top: 7rem;">
+    <!-- <input type="hidden" name="_csrf" value="<%= //csrfToken %>"> -->
+    <div class="flex flex-col gap-2 py-4">
+      <div class="flex-auto">
+        <label class="block" for="email">email : </label>
+        <input type="email" id="email" name="email" placeholder="abc@mail.com"
+          class="border border-gray-300 text-gray-900 w-full rounded p-2 text-sm" required>
+      </div>
+      <div class="flex-auto">
+        <label for="pass">Password</label>
+        <input type="password" id="pass" name="pass"
+          class="border border-gray-300 text-gray-900 w-full rounded p-2 text-sm leading-4" required>
+      </div>
+      <div class="flex-none">
+        <button type="submit" class="bg-green-600 text-white px-5 py-1.5 rounded font-medium mr-2 mb-2 ">Log
+          in</button>
+      </div>
+    </div>
+  </form>
+  <p>Not Registered <a href="/register" class="text-blue-600 underline">Sign Up</a></p>

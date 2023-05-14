@@ -27,11 +27,27 @@ app.set("view engine", "ejs");
 // eslint-disable-next-line no-undef
 app.use(express.static(path.join(__dirname, "public")));
 
-// home
 app.get("/", async (req, res) => {
+  if (req.accepts("html")) {
+    res.render("index", {});
+  } else {  
+    res.json({});
+  }
+})
+
+app.get("/register", async (req, res) => {
+  if (req.accepts("html")) {
+    res.render("register", {});
+  } else {  
+    res.json({});
+  }
+})
+
+// home
+app.get("/home", async (req, res) => {
   const allAchievements = await Achievement.getAchievements();
   if (req.accepts("html")) {
-    res.render("index", {
+    res.render("home", {
       allAchievements,
     });
   } else {  
@@ -59,7 +75,7 @@ app.post("/achievement",upload.single('file'), async (req, res) => {
 
     await Achievement.createAchievement(contestOrCourseName,originalname,path,date)
 
-    res.redirect("/");
+    res.redirect("/home");
   } catch (error) {
     res.status(500).json({ error: 'An error occurred while uploading the file.' });
   }

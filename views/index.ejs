@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    function deleteAchievement(id){
-      fetch(`/achievement/${id}`, {
-        method: 'delete',
-        headers: {'Content-Type': 'application/json'},
-      })
-      .then((res) => {
-        if (res.ok) {
-          window.location.reload()
-        }
-      })
-      .catch ((err) => console.error(err)) 
+    function validateLogin() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('pass').value;
+      if (email === "user@mail.com" && password === "1234") {
+        return true;
+      } else {
+        window.location.reload()
+        return false;
+      }
     }
   </script>
-  <title>Student Achievement</title>
 </head>
+
 <body>
   <div class="grid grid-cols-6">
-    <%- include("header.ejs") %>
-    
     <div class="col-start-3 col-span-2">
-
-      <%- include("displayAchievements.ejs", {data: allAchievements, content: "Achievements", id:"all-achievement"}) %>
-
+      <%- include('login.ejs') %>
     </div>
   </div>
 </body>
+
 </html>
